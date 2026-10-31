@@ -95,3 +95,18 @@ Overpass API で新宿周辺の実データを取得し、46件を焼き込み�
 
 注: ヒーローは赤青のオリジナルデザイン。スパイダーマン自体は Marvel の IP のため、
 公開版では名称・意匠の差し替えを前提とする。
+
+## データとライセンス
+
+- 建物の輪郭・高さ・屋上構造物・道路面・地形（標高）: 3D都市モデル（Project PLATEAU、
+  国土交通省、2025年版、文京区・新宿区ほか7区）を加工して利用。PLATEAU データは
+  CC BY 4.0（政府標準利用規約に準拠）で提供されており、本リポジトリの抽出データ
+  （`src/footprints.js` / `src/rooftops.js` / `src/proads.js` / `src/terrain.js`）も
+  同じ条件のもとで公開します。
+  出典:「3D都市モデル（Project PLATEAU）」（国土交通省）https://www.mlit.go.jp/plateau/
+- 地名ラベルと、PLATEAU道路面が無い箇所の道路補完: © OpenStreetMap contributors、
+  Open Database License (ODbL) https://www.openstreetmap.org/copyright
+  （抽出データは `src/labels.js` / `src/roads.js`）
+- three.js: MIT License（`src/vendor/three.module.js`）
+- ゲームのコード自体も MIT とします。ヒーローは赤青のオリジナルデザインで、
+  特定のキャラクターの名称・意匠は使用していません。
