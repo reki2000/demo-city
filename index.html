@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>Tokyo Swing — PLATEAU LOD1 軽量ストリーミング試作</title>
+<style>
+ html,body{margin:0;height:100%;overflow:hidden;background:#87b5d9;font-family:sans-serif}
+ #app canvas{display:block}
+ .panel{position:fixed;color:#fff;background:rgba(8,18,28,.62);border-radius:10px;padding:10px 12px;backdrop-filter:blur(3px)}
+ #info{top:10px;left:10px;font-size:13px;line-height:1.5;max-width:78vw}
+ #info b{font-size:15px}
+ #hudbox{top:10px;right:10px;text-align:left}
+ #hud{white-space:pre-line;font-size:12px;line-height:1.55;font-variant-numeric:tabular-nums}
+ #map{display:block;margin-top:6px;background:rgba(0,0,0,.25);border-radius:6px}
+ #help{bottom:10px;left:10px;font-size:12px;line-height:1.6}
+ button{font-size:13px;font-weight:700;padding:7px 12px;border:0;border-radius:8px;background:#c22727;color:#fff}
+ button[data-stage]{background:#33506b} button[data-stage].active{background:#e8b93a;color:#222}
+ .credit{opacity:.75;font-size:11px}
+</style>
+<script type="importmap">{"imports":{"three":"./src/vendor/three.module.js"}}</script>
+</head><body>
+<div id="app"></div>
+<div class="panel" id="info"><b>🕷 Tokyo Swing（試作）</b>　<span id="stageName">舞台: 春日駅前（文京区）</span><br>
+東京の街をウェブスイング。<span class="credit">建物はPLATEAU LOD1相当の footprint＋高さ をタイル化し、移動に合わせて fetch→圧縮保持→近傍だけ展開します。出典: 建物の輪郭・高さ・地形（標高）は 3D都市モデル（Project PLATEAU、国土交通省、文京区・新宿区2025年版）の実測データを加工して利用 / 欠けの補完・地名ラベル: © OpenStreetMap contributors (ODbL) / 道路もPLATEAU（交通モデル）の実測ポリゴン、無い所だけOSM</span></div>
+<div class="panel" id="hudbox"><div id="hud">読み込み中…</div><canvas id="map" width="110" height="110"></canvas></div>
+<div class="panel" id="help"><button id="autoBtn">AUTO: ON</button>
+ <button data-stage="kasuga">春日駅前</button> <button data-stage="shinjuku">新宿</button>
+ Aキー/ボタンで切替　手動: スペース長押し=糸を撃つ / 離す=リリース、Q/E=旋回、タッチ長押しでも可<br>
+ <span class="credit">地図凡例: 緑=展開中 / 黄=生データ保持 / 橙=取得中 / 暗=未取得</span></div>
+<script type="module" src="src/main.js"></script>
+</body></html>
